@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="First-form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="icon.jpg">
+</head>
+<body>
+    <div class="validation">
+        <div class="design">
+          <div class="model-content">
+                <div class="row-form">
+                    <div class="login-form">
+                        <a href="Reddit.html">
+                        <div class="cross">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        </a>
+                        <div class="modal-header">
+                            <div class="row-model">
+                                <div class="content">
+                                    <h3 >Log In</h3>
+                                     <p>By continuing, you agree to our <a href="https://www.redditinc.com/policies/user-agreement">User Agreement</a>
+                                     and acknowledge that you understand the 
+                                     <a href="https://www.reddit.com/policies/privacy-policy">Privacy Policy</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form >
+                            <div class="row-modal-body">                       
+                                <section>
+                                    <button class="btn1">
+                                        <i class="fa-brands fa-google" style="color: white;"></i>
+                                        <span class="log">Continue with Google</span>
+                                    </button>
+                                </section>
+                                <section>
+                                    <button class="btn2">
+                                        <i class="fa-brands fa-apple" style="color: white;"></i>                                 
+                                        <span class="log"> Continue with Apple </span>
+                                    </button>
+                                </section>
+                                <div class="hq">
+                                    <hr class="dc">
+                                    <span> OR</span>
+                                    <hr class="dc">
+                                </div>
+                                <div class="email">
+                                    <input id="input" name="email" type="text" placeholder="Email or Username">
+                                    <div id="email-error"></div>
+                                </div>
+                                <div class="password">
+                                    <input id="input"name="password" type="password" placeholder="Password">
+                                    <div id="password-error"></div>
+                                </div> 
+                                <div class="fn">
+                                    <p><span style="color: blue;">Forgot Password?</span> </p>
+                                </div>
+                                <div class="fn">
+                                    <p>New to Reddit? <span style="color: blue;">Sign Up</span></p>         
+                                </div>
+                                <div >
+                                    <button class="btn" type="Login">Log In</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get the form element
+const form = document.querySelector('form');
+
+// Add event listener to the form submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent default form submission
+
+  // Get the input fields
+  const emailInput = document.querySelector('.email input');
+  const passwordInput = document.querySelector('.password input');
+  const emailError = document.querySelector('#email-error');
+  const passwordError = document.querySelector('#password-error');
+
+  // Reset the error messages
+  emailError.textContent = '';
+  passwordError.textContent = '';
+
+  // Validate email
+  if (!validateEmail(emailInput.value)) {
+    emailError.textContent = 'Invalid email address';
+    emailError.style.color = 'red';
+    emailInput.style.borderColor = 'red';
+    return;
+  } else {
+    emailInput.style.borderColor = '';
+  }
+
+  // Validate password
+  if (!validatePassword(passwordInput.value)) {
+    passwordError.textContent = 'Password must be at least 8 characters , contain at least one uppercase,lowercase & digit.';
+    passwordError.style.color = 'red';
+    passwordInput.style.borderColor = 'red';
+    return;
+  } else {
+    passwordInput.style.borderColor = '';
+  }
+
+  // If both email and password are valid, proceed with form submission
+  // You can add your form submission logic here
+  console.log('Form submitted successfully!');
+});
+
+// Email validation function
+function validateEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+
+// Password validation function
+function validatePassword(password) {
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  return passwordRegex.test(password);
+}
+    </script>
+</body>
+</html>
